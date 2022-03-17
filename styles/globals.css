@@ -1,16 +1,27 @@
-html,
-body {
-  padding: 0;
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
-    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
-}
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
-a {
-  color: inherit;
-  text-decoration: none;
+.md-editor-content-editor,.CodeMirror-code{
+    height: 500px;
 }
+.ce-toolbar__plus:hover{
+    background-color: rgb(15,23,42);
+}
+.ce-toolbar__settings-btn:hover{
+    background-color: rgb(15,23,42);
+}
+.ce-settings{
+    background-color: rgb(15,23,42);
+    border-color: rgb(15,23,42);
+}
+.ce-settings__button:hover{
+    background-color: rgb(100, 116, 139);
+}
+/* .ce-paragraph{
+    background-color: rgb(100, 116, 139);
+} */
 
-* {
-  box-sizing: border-box;
+.icon{
+    color: white;
 }
