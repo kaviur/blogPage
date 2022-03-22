@@ -19,7 +19,8 @@ export default function Post({post}) {
     return (
     <div>
         <h1>Post</h1>
-        <article className='prose prose-invert'>
+        <article className='prose prose-xl leading-10 prose-p:my-16 p-5 md:0 mx-auto'>
+            <h1>{post.title}</h1>
             <ReactMarkdown>{post.content}</ReactMarkdown>
         </article>
     </div>

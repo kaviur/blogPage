@@ -9,9 +9,7 @@ export async function getServerSideProps(context){
     const res = await axios.get(url)
 
     return {
-        props:{
-            posts:res.data
-        }
+        props:res.data
     }
 }
 
