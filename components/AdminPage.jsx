@@ -12,7 +12,7 @@ export default function AdminPage({children}) {
     }
     return (
         <>
-        <section className="bg-white p-7 text-gray-800">
+        <section className="p-7 text-gray-800 bg-slate-400">
             <ul className='flex px-7 py-5 gap-5'>
                 <li><Link href="/admin">Admin</Link></li>
                 <li><Link href="/admin/posts">Posts</Link></li>
