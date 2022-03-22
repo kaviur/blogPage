@@ -8,7 +8,7 @@ export async function getServerSideProps(context){
   const res = await axios.get(url)
 
   return {
-      props:res.data
+      props:res.data.posts
   }
 }
 export default function Home({posts,highlights}) {

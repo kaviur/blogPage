@@ -9,6 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@editorjs/editorjs": "^2.23.2",
     "@uiw/react-markdown-editor": "^4.0.2",
     "axios": "^0.26.1",
     "firebase": "^9.4.1",

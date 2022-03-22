@@ -18,6 +18,7 @@ export default function AdminPage({children}) {
                 <li><Link href="/admin/posts">Posts</Link></li>
                 <li><Link href="/admin/articles">Articles</Link></li>
                 <li><Link href="/admin/articles/create">Create Article</Link></li>
+                <li><Link href="/admin/posts/rich-text">Rich Text</Link></li>
                 <li><Link href="/admin/categories">Categories</Link></li>
                 <li><Link href="/admin/comments">Comments</Link></li>
             </ul>

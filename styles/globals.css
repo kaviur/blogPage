@@ -5,7 +5,7 @@
 .md-editor-content-editor,.CodeMirror-code{
     height: 500px;
 }
-.ce-toolbar__plus:hover{
+/* .ce-toolbar__plus:hover{
     background-color: rgb(15,23,42);
 }
 .ce-toolbar__settings-btn:hover{
@@ -16,12 +16,8 @@
     border-color: rgb(15,23,42);
 }
 .ce-settings__button:hover{
-    background-color: rgb(100, 116, 139);
-}
+    background-color: rgb(100, 139, 106);
+} */
 /* .ce-paragraph{
     background-color: rgb(100, 116, 139);
 } */
-
-.icon{
-    color: white;
-}
