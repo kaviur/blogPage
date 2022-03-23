@@ -23,7 +23,7 @@ export default function Articles({articles}) {
         <>
             <div className='flex justify-between my-10'>
                 <h1 className='text-3xl font-bold'>Publicaciones realizadas</h1>
-                <Link href="/admin/posts/create"><span className='bg-yellow-200 text-black p-2 hover:bg-yellow-300 rounded-md cursor-pointer'>Crear publicación</span></Link>
+                <Link href="/admin/articles/create"><span className='bg-yellow-200 text-black p-2 hover:bg-yellow-300 rounded-md cursor-pointer'>Crear publicación</span></Link>
             </div>
 
             <section className='grid grid-cols-3 gap-4'>

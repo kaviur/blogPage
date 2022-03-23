@@ -1,8 +1,16 @@
 import React, { useRef } from 'react'
 import axios from 'axios'
-import Editor from '../../../components/Editor'
+import dynamic from 'next/dynamic'
+// import Editor from '../../../components/Editor'
 import { useSession } from 'next-auth/react'
 import { useRouter } from 'next/router'
+
+
+const EditorV2 = dynamic(
+    ()=>import("../../../components/EditorV2"),{
+        ssr:false
+    }
+)
 
 
 export default function RichText() {
@@ -46,7 +54,8 @@ export default function RichText() {
                 <input id='highlight' type="checkbox" ref={highlight}></input>
                 <button className='bg-yellow-200 text-slate-700 px-10 py-2 ml-auto' onClick={saveContent}>Create</button>
             </div>
-            <Editor ejInstance={ejInstance}/>
+            {/* <Editor ejInstance={ejInstance}/> */}
+            {EditorV2 && <EditorV2/>}
         </div>
     )
 }
