@@ -9,7 +9,7 @@ import React,{useEffect} from 'react'
 //     }
 //   )
 
-
+//NOTA:finalmente no se usó este por no sorportar server side rendering --funciona bn con react pero no con next
 const EDITOR_ID = "editorjs"
 
 export default function Editor({ejInstance}) {

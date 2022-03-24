@@ -1,4 +1,4 @@
-import React, { useRef } from 'react'
+import React, { useCallback, useRef } from 'react'
 import { createReactEditorJS } from 'react-editor-js'
 
 const ReactEditorJS = createReactEditorJS()
@@ -6,9 +6,8 @@ import Header from "@editorjs/header";
 import List from "@editorjs/list";
 import Embed from "@editorjs/embed";
 
-const instance = useRef(null)
 
-export default function EditorV2() {
+export default function EditorV2({instance}) {
     const tools = {
         header:Header,
         list:List,
@@ -23,13 +22,14 @@ export default function EditorV2() {
             }
         }
 
-        const init =useCallback((ins)=>{
-            console.log(ins)
+        //se le pasa la instancia a la referencia 'instance'
+        const initialize = useCallback((ins)=>{
+            instance.current = ins
         },[])
 
     return (
         <div className='prose prose-xl max-w-none leading-10 prose-p:my-16 p-5 md:0 mx-auto border-2 border-slate-200 rounded-sm'>
-        <ReactEditorJS onInit={init} tools={tools} />
+        <ReactEditorJS onInitialize={initialize}tools={tools} />
         </div>
     )
 }
