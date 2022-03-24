@@ -12,7 +12,6 @@ const EditorV2 = dynamic(
     }
 )
 
-
 export default function RichText() {
     const router = useRouter()
     //Ref de editorInstance
