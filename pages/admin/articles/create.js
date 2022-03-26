@@ -61,11 +61,3 @@ export default function RichText() {
         </div>
     )
 }
-
-{/* <div className='p-5 mx-auto mt-10 flex items-center'>
-                <input type="text" ref={title} placeholder="Titulo de la publicación"></input>
-                <input type="text" ref={image} placeholder="Imagen de la publicación"></input>
-                <label className='text-2xl ml-10' htmlFor='highlight'>¿Highlight?</label>
-                <input id='highlight' type="checkbox" ref={highlight}></input>
-                <button className='bg-yellow-200 text-slate-700 px-10 py-2 ml-auto' onClick={saveContent}>Create</button>
-            </div> */}

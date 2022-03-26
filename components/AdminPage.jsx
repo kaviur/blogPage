@@ -12,20 +12,8 @@ export default function AdminPage({children}) {
     }
     return (
         <>
-        <section className="p-7 text-gray-800 bg-slate-400">
-            <ul className='flex px-7 py-5 gap-5'>
-                <li><Link href="/admin">Admin</Link></li>
-                <li><Link href="/admin/posts">Posts</Link></li>
-                <li><Link href="/admin/articles">Articles</Link></li>
-                <li><Link href="/admin/articles/create">Create Article</Link></li>
-                <li><Link href="/admin/posts/rich-text">Rich Text</Link></li>
-                <li><Link href="/admin/categories">Categories</Link></li>
-                <li><Link href="/admin/comments">Comments</Link></li>
-            </ul>
-        </section>
-
         <main className='flex justify-center text-gray-800'>
-            <section className="w-9/12">
+            <section className="w-11/12 bg-white m-3">
                 {children} 
             </section>
         </main>

@@ -4,14 +4,14 @@ import axios from 'axios'
 
 export async function getServerSideProps(context){
     const secure = context.req.connection.encrypted
-    const url = `${secure?"https":"http"}://${context.req.headers.host}/api/articles`
+    const url = `${secure?"https":"http"}://${context.req.headers.host}/api/articles/byAthor`
 
     const res = await axios.get(url)
     console.log(res)
 
     return {
         props:{
-            articles:res.data.articles
+            articles:res.data
         }
     }
 }
@@ -33,9 +33,8 @@ export default function Articles({articles}) {
                     <Link href={`/admin/posts/${post.id}`}><h3 className='text-1xl font-bold mb-3 cursor-pointer text-center mt-3'>{post.title}</h3></Link>
                     
                     <div className='flex items-center mb-5'>
-                        <img className='h-6 w-6 rounded-full mr-3' src={post.author.image}></img>
                         <div className='flex flex-col justify-center'>
-                            <p className='text-sm text-pink-500'>Por: {post.author.name} | {new Date(post.date).toLocaleDateString()}</p>
+                            <p className='text-sm text-pink-500'>Mensajes | likes </p>
                             {/* <p className='text-xs'>{new Date(post.date).toLocaleTimeString()}</p> */}
                             <hr className='text-sm text-pink-600 mt-4'></hr>
                         </div>
