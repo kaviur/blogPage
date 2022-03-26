@@ -21,9 +21,9 @@ export async function getServerSideProps(context) {
     // const paginationUrl = `${secure ? "https" : "http"}://${context.req.headers.host}/api/pagination${context.resolvedUrl}`
     // totalPagesRes = await axios.get(paginationUrl)
 
-    // //get highlights for slider
-    // const highlightsUrl = `${secure ? "https" : "http"}://${context.req.headers.host}/api/posts/highlights`
-    // const highlightsRes = await axios.get(highlightsUrl)
+    //get highlights for slider
+    const highlightsUrl = `${secure ? "https" : "http"}://${context.req.headers.host}/api/articles/highlights`
+    const highlightsRes = await axios.get(highlightsUrl)
 
     const categoryUrl = `${secure ? "https" : "http"}://${context.req.headers.host}/api/categories`
     const categoriesRes = await axios.get(categoryUrl)
@@ -32,7 +32,7 @@ export async function getServerSideProps(context) {
         props: {
             categories: categoriesRes.data,
             posts: postsRes.data,
-            // highlights: highlightsRes.data,
+            highlights: highlightsRes.data,
             // pages: totalPagesRes.data
         }
     }
@@ -88,14 +88,6 @@ const RegularPosts = ({ categories, posts }) => {
     return (
         <section className='pt-[6rem] px-6 h-full min-h-screen flex flex-col items-center'>
             <div className='flex flex-col md:flex-row w-full h-full my-6 gap-16'>
-                <div className='h-auto min-h-screen flex flex-col gap-5'>
-                    {
-                        posts
-                            ? <PostsList listOfPosts={posts} />
-                            : <Loading />
-                    }
-                </div>
-
                 <div className=' h-auto w-full md:h-full md:w-[20%] p-2 bg-slate-100'>
                     <h1 className='font-faudiowide text-lg py-2 px-2 border-b-2 border-pink-400'>Categorias</h1>
                     <div className='w-full h-auto flex flex-col gap-2 mt-2 box-border'>
@@ -116,6 +108,17 @@ const RegularPosts = ({ categories, posts }) => {
                         }
                     </div>
                 </div>    
+                <div className='h-auto min-h-screen flex flex-col gap-5'>
+                    {
+                        posts
+                            ? <PostsList listOfPosts={posts} />
+                            : <Loading />
+                    }
+                </div>
+
+                <aside className=' h-auto w-full md:h-full md:w-[20%] p-2 bg-slate-100'>
+
+                </aside>   
             </div>
         </section>
     )

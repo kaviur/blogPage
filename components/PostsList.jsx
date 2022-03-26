@@ -23,7 +23,7 @@ const PostsList = ({ listOfPosts }) => {
                                         dragConstraints={{ top: 1, bottom: 1, right: 1, left: 1 }}
                                     >
                                         <img src={post.image}></img>
-                                        <Link href={`/admin/posts/${post.id}`}><h3 className='text-1xl font-bold mb-3 cursor-pointer text-center mt-3'>{post.title}</h3></Link>
+                                        <Link href={`/articles/${post.id}`}><h3 className='text-1xl font-bold mb-3 cursor-pointer text-center mt-3'>{post.title}</h3></Link>
                                         
                                         <div className='flex items-center mb-5'>
                                             <div className='flex flex-col justify-center'>
