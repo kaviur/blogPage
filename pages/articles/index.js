@@ -2,8 +2,10 @@ import axios from 'axios'
 import { useRef, useEffect, useState } from 'react'
 import PostsList from '../../components/PostsList'
 import Loading from '../../components/Loading'
+import RightAside from '../../components/RightAside'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
+import FeaturedPosts from '../../components/FeaturedPosts'
 
 export async function getServerSideProps(context) {
     const secure = context.req.connection.encrypted
@@ -22,7 +24,7 @@ export async function getServerSideProps(context) {
     // totalPagesRes = await axios.get(paginationUrl)
 
     //get highlights for slider
-    const highlightsUrl = `${secure ? "https" : "http"}://${context.req.headers.host}/api/articles/highlights`
+    const highlightsUrl = `${secure ? "https" : "http"}://${context.req.headers.host}/api/articles/featured`
     const highlightsRes = await axios.get(highlightsUrl)
 
     const categoryUrl = `${secure ? "https" : "http"}://${context.req.headers.host}/api/categories`
@@ -39,7 +41,7 @@ export async function getServerSideProps(context) {
 }
 
 
-const RegularPosts = ({ categories, posts }) => {
+const RegularPosts = ({ categories, posts, highlights }) => {
     const searchRef = useRef(null)
     const router = useRouter()
     // const [maxPage, setMaxPage] = useState()
@@ -86,7 +88,7 @@ const RegularPosts = ({ categories, posts }) => {
     // }
 
     return (
-        <section className='pt-[6rem] px-6 h-full min-h-screen flex flex-col items-center'>
+        <section className='pt-[6rem] h-full min-h-screen flex flex-col items-center'>
             <div className='flex flex-col md:flex-row w-full h-full my-6 gap-16'>
                 <div className=' h-auto w-full md:h-full md:w-[20%] p-2 bg-slate-100'>
                     <h1 className='font-faudiowide text-lg py-2 px-2 border-b-2 border-pink-400'>Categorias</h1>
@@ -107,6 +109,11 @@ const RegularPosts = ({ categories, posts }) => {
                                 : <Loading />
                         }
                     </div>
+                    <hr></hr>
+                    <div className="mt-4">
+                        <h1 className='font-faudiowide text-lg py-2 px-2 border-b-2 border-pink-400'>Destacados</h1>
+                        <FeaturedPosts listOfPosts={highlights} />
+                    </div>                
                 </div>    
                 <div className='h-auto min-h-screen flex flex-col gap-5'>
                     {
@@ -114,11 +121,7 @@ const RegularPosts = ({ categories, posts }) => {
                             ? <PostsList listOfPosts={posts} />
                             : <Loading />
                     }
-                </div>
-
-                <aside className=' h-auto w-full md:h-full md:w-[20%] p-2 bg-slate-100'>
-
-                </aside>   
+                </div>  
             </div>
         </section>
     )

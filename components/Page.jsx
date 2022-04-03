@@ -9,7 +9,7 @@ export default function Page({children}) {
     return (
         <div className='min-h-screen bg-white flex flex-col'>
             <NavBar />            
-            <main className="bg-white text-gray-800 h-full max-w-screen-2xl mx-auto">
+            <main className="bg-white text-gray-800 h-full container mx-auto">
                 {children}
             </main>
             <Footer />

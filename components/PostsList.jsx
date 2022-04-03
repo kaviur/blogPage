@@ -10,7 +10,7 @@ const PostsList = ({ listOfPosts }) => {
                     ? <p className='font-fgrotesque text-lg tracking-widest p-3 h-20 flex items-center justify-center'>Aún no se han publicado artículos sobre el tema elegido</p>
                     : (
                         listOfPosts.map((post, index) => (
-                            <Link key={post.id} href={`/posts/${post.id}`} passHref>
+                            <Link key={post.id} href={`/articles/${post.id}`} passHref>
                                 <a>
                                     <motion.button
                                         key={post.id}
