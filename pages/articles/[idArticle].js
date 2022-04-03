@@ -56,10 +56,6 @@ export default function Article({article,categories}) {
                                 : <Loading />
                         }
                     </div>
-
-                        {
-                            console.log(article)
-                        }
                 </div>
                 <div className='h-auto w-full md:h-full md:min-h-screen md:w-[75%] flex flex-col gap-5 border-t-4 md:border-t-0 md:border-r-4 border-purple-600 mt-7 md:mt-0 pt-2 md:pt-0'>
                     <div className='h-auto min-h-screen flex flex-col gap-5'>
@@ -68,6 +64,9 @@ export default function Article({article,categories}) {
                                 <h1>{article.title}</h1>
                                 <img src={article.image}></img>
                                 <Output data={article.content} />
+                                {
+                                    console.log(article.content)
+                                }
                                 
                             </article>                        
                     </div>

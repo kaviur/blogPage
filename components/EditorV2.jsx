@@ -2,7 +2,7 @@ import React, { useCallback, useRef } from 'react'
 import { createReactEditorJS } from 'react-editor-js'
 
 const ReactEditorJS = createReactEditorJS()
-import SimpleImage from '@editorjs/simple-image';
+import SimpleImage from "@editorjs/simple-image";
 import Header from "@editorjs/header";
 import List from "@editorjs/list";
 import Embed from "@editorjs/embed";
@@ -12,7 +12,6 @@ export default function EditorV2({instance}) {
     const tools = {
         header:Header,
         list:List,
-        simpleImage: SimpleImage,
         embed:{
             class: Embed,
             config:{
@@ -21,7 +20,8 @@ export default function EditorV2({instance}) {
                 coub: true
                 }
             }
-            }
+        },
+        simpleImage:SimpleImage
         }
 
         //se le pasa la instancia a la referencia 'instance'

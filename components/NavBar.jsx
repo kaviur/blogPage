@@ -27,7 +27,7 @@ const NavBar = () => {
                     <li><Link href="/admin/articles">Tus publicaciones</Link></li>
                     <li><Link href="/admin/articles/create">Crea un artículo</Link></li>
                     <li><Link href="/admin/categories">Categorias</Link></li>
-                    <li><Link href="/admin/comments">Commentarios</Link></li>
+                    <li><Link href="/admin/comments">Comentarios</Link></li>
                     <li className='hover:bg-yellow-100 hover:text-gray-800 p-3 pl-20'>
                         <button className='flex items-center gap-3' onClick={() => signOut()}>Salir</button>
                     </li>
@@ -48,8 +48,6 @@ const NavBar = () => {
                     {!session?.user?.email&&<li><Link href="/subscriber/register">Suscribirse</Link></li>}
                     <li className='menuCategories' onMouseOver={()=>{setShowCats(true)}}>Categorias <IoMdArrowDropdown onClick={()=>{setShowCats(!showCats)}} className='w-5 h-5 inline-block'/></li>
                     <li><Link href='/articles'>Posts</Link></li>
-                    <li>Sobre mí</li>
-                    <li>Tienda</li>
                     <li>Contacto</li>
                     <li><FaSearch size={20} /></li>                    
                 </ul>
