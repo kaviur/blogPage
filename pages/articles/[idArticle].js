@@ -65,7 +65,7 @@ export default function Article({article,categories}) {
                                 <img src={article.image}></img>
                                 <Output data={article.content} />
                                 {
-                                    console.log(article.content)
+                                    console.log(article.content)                                    
                                 }
                                 
                             </article>                        
