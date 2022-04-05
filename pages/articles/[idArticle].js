@@ -67,7 +67,13 @@ export default function Article({article,categories}) {
                                 {
                                     console.log(article.content)
                                 }
-                                
+                                {article.content.blocks.map((bloque)=>{
+                                    console.log(bloque.type)
+                                    if(bloque.type==="simpleImage"){
+                                        console.log(bloque.data.url) 
+                                        return <img src={article.image}></img>
+                                    }
+                                })}
                             </article>                        
                     </div>
                     {/* <div className='w-full h-[70px] flex gap-4 items-center justify-center font-fgrotesque font-bold'>
