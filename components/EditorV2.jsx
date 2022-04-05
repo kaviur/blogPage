@@ -6,12 +6,26 @@ import SimpleImage from "@editorjs/simple-image";
 import Header from "@editorjs/header";
 import List from "@editorjs/list";
 import Embed from "@editorjs/embed";
-
+import Quote from '@editorjs/quote';
+import Marker from '@editorjs/marker';
+import Warning from '@editorjs/warning';
+import Image from '@editorjs/image'
 
 export default function EditorV2({instance}) {
     const tools = {
         header:Header,
         list:List,
+        quote: Quote,
+        marker: Marker,
+        warning: {
+            class: Warning,
+            inlineToolbar: true,
+            shortcut: 'CMD+SHIFT+W',
+            config: {
+              titlePlaceholder: 'Title',
+              messagePlaceholder: 'Message',
+            },
+        },
         embed:{
             class: Embed,
             config:{
@@ -21,7 +35,8 @@ export default function EditorV2({instance}) {
                 }
             }
         },
-        simpleImage:SimpleImage
+        image: SimpleImage,
+        //image: Image,
         }
 
         //se le pasa la instancia a la referencia 'instance'

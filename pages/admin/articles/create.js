@@ -25,8 +25,7 @@ export default function RichText() {
     
     const saveContent = async () =>{
         
-        const content = await editor.current.save()
-        console.log(content)
+        const content = await editor.current.save()   
 
         try{
             const res = await axios.post("/api/articles/create",{
@@ -37,8 +36,6 @@ export default function RichText() {
                 highlight:highlight.current.checked,
                 content,
             })
-
-            console.log(res)
 
             router.replace("/admin")
         }catch(error){

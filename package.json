@@ -29,7 +29,11 @@
     "react-markdown": "^8.0.1"
   },
   "devDependencies": {
+    "@editorjs/image": "^2.6.2",
+    "@editorjs/marker": "^1.2.2",
+    "@editorjs/quote": "^2.4.0",
     "@editorjs/simple-image": "^1.4.1",
+    "@editorjs/warning": "^1.2.0",
     "@tailwindcss/typography": "^0.5.2",
     "autoprefixer": "^10.4.4",
     "eslint": "8.11.0",
