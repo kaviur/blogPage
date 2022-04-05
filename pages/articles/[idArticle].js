@@ -34,6 +34,17 @@ export async function getServerSideProps(context){
 
 export default function Article({article,categories}) {
 
+    const bloques = article.content.blocks
+    for (let i = 0; i < bloques.length; i++) {
+        //console.log(bloques[i].data)
+        if(bloques[i].type==="image"){
+            console.log(bloques[i].data.url)
+            const url = bloques[i].data.url
+            const file = bloques[i].data.file={}
+            file.url=url
+        }
+    }
+
     return (
         <section className='pt-[6rem] h-full min-h-screen flex flex-col items-center'>
             <div className='flex flex-col md:flex-row w-full h-full my-6 gap-16'>
@@ -62,18 +73,10 @@ export default function Article({article,categories}) {
                         
                             <article className='prose prose-xl leading-10 prose-p:my-16 p-5 md:0 mx-auto'>
                                 <h1>{article.title}</h1>
-                                <img src={article.image}></img>
                                 <Output data={article.content} />
                                 {
-                                    console.log(article.content)                                    
+                                    console.log("del output...",article.content)                                    
                                 }
-                                {article.content.blocks.map((bloque)=>{
-                                    console.log(bloque.type)
-                                    if(bloque.type==="simpleImage"){
-                                        console.log(bloque.data.url) 
-                                        return <img src={article.image}></img>
-                                    }
-                                })}
                             </article>                        
                     </div>
                     {/* <div className='w-full h-[70px] flex gap-4 items-center justify-center font-fgrotesque font-bold'>

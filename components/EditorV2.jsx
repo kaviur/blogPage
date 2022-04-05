@@ -22,8 +22,8 @@ export default function EditorV2({instance}) {
             inlineToolbar: true,
             shortcut: 'CMD+SHIFT+W',
             config: {
-              titlePlaceholder: 'Title',
-              messagePlaceholder: 'Message',
+                titlePlaceholder: 'Title',
+                messagePlaceholder: 'Message',
             },
         },
         embed:{
