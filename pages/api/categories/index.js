@@ -20,7 +20,8 @@ export default async function categorieslist({body, method}, res) {
 
     if (method == 'PUT') {
         await updateDoc(doc(database, 'categories', body.id),{
-            name: body.name
+            name: body.name,
+            img: body.img
         })
         return res.status(200).json({message:'category edited'}) 
     }
