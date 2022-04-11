@@ -11,7 +11,7 @@ import Marker from '@editorjs/marker';
 import Warning from '@editorjs/warning';
 import Image from '@editorjs/image'
 
-export default function EditorV2({instance}) {
+export default function EditorV2({instance,blocks=null}) {
     const tools = {
         header:Header,
         list:List,
@@ -45,8 +45,9 @@ export default function EditorV2({instance}) {
         },[])
 
     return (
-        <div className='prose prose-xl max-w-none leading-10 prose-p:my-16 p-5 md:0 mx-auto border-2 border-slate-200 rounded-sm'>
-        <ReactEditorJS onInitialize={initialize}tools={tools} />
+        <div className='prose prose-xl max-w-none leading-10 prose-p:my-16 p-5 md:0 mx-auto border-2 border-gray-300 w-10/12 rounded-sm'>
+            <h2 className='text-gray-400'>Ingresa el contenido del post, puedes pegar citas, listas, links, enlaces de youtube y enlaces de imágenes</h2>
+            <ReactEditorJS onInitialize={initialize}tools={tools} defaultValue={blocks}/>
         </div>
     )
 }

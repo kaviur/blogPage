@@ -14,7 +14,7 @@ const NavBar = () => {
 
     return (
     <div>
-        <nav className="bg-slate-300 text-gray-800 flex justify-center items-center">
+        <nav className="bg-white text-gray-800 flex justify-center items-center">
                 <ul className='flex gap-5 w-11/12'>
                     <Link className='flex gap-5 w-11/12' href="/">My Blog</Link>
                     {!session?.user?.email?<li className='ml-auto mr-1 text-gray-500' onClick={() => signIn()}>Login</li>

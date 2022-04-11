@@ -20,16 +20,15 @@ export async function getServerSideProps(context){
 
 export default function Articles({articles}) {
 
-    console.log(articles)
     return (
         <>
             <DashboarLayout >
-                <article className=' bg-gray-100 prose prose-xl leading-10 prose-p:my-16 p-5 md:0'>
-                    <div className='flex justify-between my-10'>
+                <article className='prose prose-xl leading-10 prose-p:my-16 p-3 px-6 md:0'>
+                    <div className='flex justify-between my-5'>
                         <h1 className='text-3xl font-bold'>Publicaciones realizadas</h1>
                         <Link href="/admin/articles/create"><span className='bg-yellow-200 text-black p-2 hover:bg-yellow-300 rounded-md cursor-pointer'>Crear publicación</span></Link>
                     </div>
-                    <Card articles={articles} />
+                    <Card articles={articles}/>
                 </article> 
             </DashboarLayout>                                                
         </>

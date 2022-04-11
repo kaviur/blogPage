@@ -1,22 +1,51 @@
 import React from 'react'
-import Link from 'next/link'
-import MenuAdmin from '../../components/MenuAdmin'
+import { BsFilePost } from 'react-icons/bs'
+import { BiCategory } from 'react-icons/bi'
+import { FaUsers } from 'react-icons/fa'
+import axios from 'axios'
+import DashboardLayout from '../../components/DashboardLayout'
+import DashboardCard from '../../components/DashboardCard'
 
-export default function Admin() {
+export async function getServerSideProps(context) {
+
+    const secure = context.req.connection.encrypted
+
+    const postUrl = `${secure ? "https" : "http"}://${context.req.headers.host}/api/amounts/articles_amount`
+    const postAmount = await axios.get(postUrl)
+
+    const categoryUrl = `${secure ? "https" : "http"}://${context.req.headers.host}/api/amounts/categories_amount`
+    const categoryAmount = await axios.get(categoryUrl)
+
+    const userUrl = `${secure ? "https" : "http"}://${context.req.headers.host}/api/amounts/users_amount`
+    const userAmount = await axios.get(userUrl)
+
+    return {
+        props: {
+            posts: postAmount.data,
+            categories: categoryAmount.data,
+            users: userAmount.data,
+        }
+    }
+}
+
+export default function Admin({posts,categories,users}) {
     return (
-        <section className='pt-[6rem] h-full min-h-screen flex flex-col items-center'>
-            <div className='flex flex-col md:flex-row w-full h-full my-6 gap-16'>
-                <div className=' h-auto w-full md:h-full md:w-[20%] p-2 bg-slate-100'>
-                    <MenuAdmin/>
-                </div>
-                <div className='h-auto w-full md:h-full md:min-h-screen md:w-[75%] flex flex-col gap-5 border-t-4 md:border-t-0 md:border-r-4 border-purple-600 mt-7 md:mt-0 pt-2 md:pt-0'>
-                    <div className='h-auto min-h-screen flex flex-col gap-5'>                        
-                        <article className='prose prose-xl leading-10 prose-p:my-16 p-5 md:0 mx-auto'>
-                            <h1>Administra tus publicaciones</h1>
-                        </article>                        
-                    </div>
+        <DashboardLayout>
+            <div className='h-auto w-full md:h-full md:min-h-screen flex flex-col gap-5 mt-5 md:mt-0 pt-2 md:pt-0 bg-slate-300 rounded-r-md'>
+                <div className='h-auto min-h-screen flex justify-around mt-4 gap-2'>                        
+                    <DashboardCard name={'Usuarios'} amount={users} >
+                        <FaUsers color='#7e22ce' size={40} />
+                    </DashboardCard>
+
+                    <DashboardCard name={'Categorias'} amount={categories} >
+                        <BiCategory color='#7e22ce' size={40} />
+                    </DashboardCard>
+
+                    <DashboardCard name={'Publicaciones'} amount={posts} >
+                        <BsFilePost color='#7e22ce' size={40} />
+                    </DashboardCard>
                 </div>
             </div>
-        </section>
+        </DashboardLayout>
     )
 }

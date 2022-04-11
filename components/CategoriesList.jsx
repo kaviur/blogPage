@@ -6,7 +6,7 @@ const CategoriesList = ({ listOfCategories, selectCategory }) => {
         <>
             {
                 listOfCategories == ''
-                    ? <p className='font-fgrotesque text-lg tracking-widest p-3 h-20 flex items-center justify-center'>No hay Categorias Registradas</p>
+                    ? <p className='font-fgrotesque text-lg tracking-widest p-3 h-20 flex items-center justify-center'>Ningún registro encontrado, crea la cantidad de categorías que desees</p>
                     : (
                         listOfCategories.map((item, index) => (
                             <motion.button

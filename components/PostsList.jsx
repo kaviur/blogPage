@@ -22,7 +22,7 @@ const PostsList = ({ listOfPosts }) => {
                                         dragElastic={1}
                                         dragConstraints={{ top: 1, bottom: 1, right: 1, left: 1 }}
                                     >
-                                        <img src={post.image}></img>
+                                        <img className="h-40 w-full object-cover object-center transition-all hover:object-bottom duration-1000 rounded-b-md" src={post.image}></img>
                                         <Link href={`/articles/${post.id}`}><h3 className='text-1xl font-bold mb-3 cursor-pointer text-center mt-3'>{post.title}</h3></Link>
                                         
                                         <div className='flex items-center mb-5'>

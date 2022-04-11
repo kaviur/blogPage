@@ -21,9 +21,9 @@ export default function DashboarLayout({children}) {
 
     return (
         <>
-            <section className='pt-[3rem] h-full min-h-screen flex flex-col items-center'>
-                <div className='flex flex-col md:flex-row w-full h-full my-6 gap-16'>
-                    <div className=' h-auto w-full md:h-full md:w-[20%] p-2 bg-slate-100'>
+            <div className='h-full min-h-screen flex flex-col items-center bg-gray-50 mt-6 rounded-md'>
+                <div className='flex flex-col md:flex-row w-full h-full gap-16'>
+                    <div className='w-full md:h-full md:w-[20%] p-2 mt-4 ml-5'>
                         <MenuAdmin/>
                     </div>
                     <div className='h-auto w-full md:h-full md:min-h-screen md:w-[75%] flex flex-col gap-5 border-t-4 md:border-t-0 mt-7 md:mt-0 pt-2 md:pt-0'>
@@ -32,7 +32,7 @@ export default function DashboarLayout({children}) {
                         </div>
                     </div>
                 </div>
-            </section>
+            </div>
         </>
     )
 }
