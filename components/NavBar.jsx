@@ -5,12 +5,17 @@ import {FaUser} from 'react-icons/fa'
 import { FaSearch } from 'react-icons/fa'
 import {IoMdArrowDropdown} from 'react-icons/io'
 import { signOut,signIn } from 'next-auth/react'
+import { setCookies,getCookie } from 'cookies-next'
 
 const NavBar = () => {
 
     const { data: session } = useSession()
     const [options,setOptions] = useState(false)
     const [showCats,setShowCats] = useState(false)
+
+    if(session?.user?.email){
+        setCookies("email",session?.user?.email)
+    }
 
     return (
     <div>
@@ -27,14 +32,21 @@ const NavBar = () => {
                     <li><Link href="/admin/articles">Tus publicaciones</Link></li>
                     <li><Link href="/admin/articles/create">Crea un artículo</Link></li>
                     <li><Link href="/admin/categories">Categorias</Link></li>
-                    <li><Link href="/admin/comments">Comentarios</Link></li>
                     <li className='hover:bg-yellow-100 hover:text-gray-800 p-3 pl-20'>
                         <button className='flex items-center gap-3' onClick={() => signOut()}>Salir</button>
                     </li>
                 </ul>
                 :
                 <ul className={`${options?"block":"hidden"} absolute right-7 top-20 bg-white p-2`}>
-                    <li><Link href="/subscribers/novedades">Novedades</Link></li>
+                    {/* <li><Link href="/subscribers/novedades">Novedades</Link></li>
+                    <li className='hover:bg-yellow-100 hover:text-gray-800 p-3 pl-20'>
+                        <button className='flex items-center gap-3' onClick={() => signOut()}>Salir</button>
+                    </li> */}
+                    {/* TODO:MODIFICAR ESTE MENÚ DEPENDIENDO DEL ROL: lo dejé así para micentroderecursos */}
+                    <li><Link href="/admin">Dashboard</Link></li>
+                    <li><Link href="/admin/articles">Tus publicaciones</Link></li>
+                    <li><Link href="/admin/articles/create">Crea un artículo</Link></li>
+                    <li><Link href="/admin/categories">Categorias</Link></li>
                     <li className='hover:bg-yellow-100 hover:text-gray-800 p-3 pl-20'>
                         <button className='flex items-center gap-3' onClick={() => signOut()}>Salir</button>
                     </li>

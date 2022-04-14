@@ -3,8 +3,10 @@ import { database } from '../../../database'
 
 export default async function list(req,res){
 
-    //TODO: sacar el correo del usuario de la sesi+on
-    const q = query(collection(database,"articles"),where("author.email","==","quemojojojo@gmail.com"))
+    const {email} = req.query;
+    //console.log('parametros',req)
+
+    const q = query(collection(database,"articles"),where("author.email","==",email))
     const docs = await getDocs(q)
     const data = []
     docs.forEach(doc=>{

@@ -3,6 +3,7 @@ import GitHubProvider from 'next-auth/providers/github';
 import GoogleProvider from 'next-auth/providers/google';
 import {database} from "../../../database"
 import {doc,getDoc,setDoc} from 'firebase/firestore'
+import {setCookies} from 'cookies-next'
 
 export default NextAuth({
     providers:[
@@ -20,7 +21,7 @@ export default NextAuth({
     },
     callbacks:{
         async jwt({token,account}){
-            //console.log("JWT",account)
+            //console.log("JWT",token)
             if(account?.providerAccountId){
                 token.id = account.providerAccountId
                 const snapshot = await getDoc(doc(database,"users",account.providerAccountId))
@@ -53,6 +54,7 @@ export default NextAuth({
             if(token?.id && token?.role){
                 session.user.id = token.id
                 session.user.role = token.role
+                session.user.mail = token.email
             }
             return session
         }

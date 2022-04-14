@@ -99,7 +99,7 @@ export default function RichText({categories,post}) {
                         </div>
                         <div className='mt-4 flex-row-reverse'>
                             <div className='float-right'>
-                                <button className='bg-yellow-200 text-slate-700 px-10 py-2 ml-auto' onClick={updateContent}>Publicar</button>
+                                <button className='bg-yellow-200 text-slate-700 px-10 py-2 ml-auto' onClick={updateContent}>Confirmar cambios</button>
                             </div>
                         </div>
                     </div>

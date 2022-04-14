@@ -16,6 +16,7 @@
     "@editorjs/paragraph": "^2.8.0",
     "@uiw/react-markdown-editor": "^4.0.2",
     "axios": "^0.26.1",
+    "cookies-next": "^2.0.4",
     "editorjs-react-renderer": "^3.0.1",
     "firebase": "^9.4.1",
     "framer-motion": "^6.2.8",

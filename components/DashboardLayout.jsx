@@ -8,7 +8,12 @@ export default function DashboarLayout({children}) {
     const { data: session } = useSession()
     const router = useRouter()
 
-    if(session === null || session?.user?.role==="regular"){
+    {/* TODO:DESCOMENTAR ESTO CUANDO SE HABILITEN LOS ROLES: lo dejé así para micentroderecursos */}
+    // if(session === null || session?.user?.role==="regular"){
+    //     router.replace("/")
+    // }
+
+    if(session === null){
         router.replace("/")
     }
     

@@ -1,24 +1,52 @@
-import React from 'react'
+import React, {useState,useEffect} from 'react'
 import Link from 'next/link'
 import axios from 'axios'
 import DashboarLayout from '../../../components/DashboardLayout'
 import Card from '../../../components/Card'
+import Loading from '../../../components/Loading'
+import { getCookie } from 'cookies-next'
 
-export async function getServerSideProps(context){
-    const secure = context.req.connection.encrypted
-    const url = `${secure?"https":"http"}://${context.req.headers.host}/api/articles/byAthor`
+export async function getServerSideProps({params,query,req,res}){
+    const secure = req.connection.encrypted
+    const url = `${secure?"https":"http"}://${req.headers.host}/api/articles/byAuthor`
+    const email = getCookie("email",{ req, res })
 
-    const res = await axios.get(url)
-    console.log(res)
+    const response = await axios.get(url, {
+        params: {
+            email
+        }
+    })
+    //console.log(response)
 
     return {
         props:{
-            articles:res.data
+            articles:response.data
         }
     }
 }
 
 export default function Articles({articles}) {
+
+    const [refreshData, setRefreshData] = useState(false)
+    const [allArticles, setAllArticles] = useState(articles)
+    const [isLoading, setIsLoading] = useState(null)
+
+    const getAllArticles = () =>{
+        setIsLoading(true)
+        axios.get('/api/articles/byAuthor').then(res => {
+            setIsLoading(false)
+            setAllArticles(res.data)
+        }).catch(error => {
+            console.log(error)
+        })
+    }
+
+    useEffect(()=>{
+        if(refreshData == true){
+            getAllArticles()
+            setRefreshData(false)
+        }
+    },[refreshData])
 
     return (
         <>
@@ -28,7 +56,11 @@ export default function Articles({articles}) {
                         <h1 className='text-3xl font-bold'>Publicaciones realizadas</h1>
                         <Link href="/admin/articles/create"><span className='bg-yellow-200 text-black p-2 hover:bg-yellow-300 rounded-md cursor-pointer'>Crear publicación</span></Link>
                     </div>
-                    <Card articles={articles}/>
+                    {
+                        isLoading
+                        ? <Loading/>
+                        : <Card articles={allArticles} refreshingData={setRefreshData}/>
+                    }
                 </article> 
             </DashboarLayout>                                                
         </>

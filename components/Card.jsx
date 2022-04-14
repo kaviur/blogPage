@@ -5,38 +5,8 @@ import {BsPencilFill} from 'react-icons/bs'
 import {TiEyeOutline} from 'react-icons/ti'
 import Swal from 'sweetalert2'
 import axios from 'axios'
-import { useRouter } from 'next/router'
 
-const Card = ({articles}) => {
-
-    const router = useRouter()
-
-    // useEffect(() => {
-    //     Swal.fire({
-    //         title: 'Are you sure?',
-    //         text: "You won't be able to revert this!",
-    //         icon: 'warning',
-    //         showCancelButton: true,
-    //         confirmButtonColor: '#3085d6',
-    //         cancelButtonColor: '#d33',
-    //         confirmButtonText: 'Yes, delete it!'
-    //     }).then((result) => {
-    //         if (result.isConfirmed) {
-    //             Swal.fire(
-    //             'Deleted!',
-    //             'Your file has been deleted.',
-    //             'success'
-    //             )
-    //         }
-    //     }).catch(error=>console.log(error))
-
-
-    //     // axios.delete(`/api/articles/${id}`)
-    //     //     .then((res) => {
-    //     //         router.replace('/admin/articles')
-    //     //     }).catch(error => console.log(error))
-    // }, [])
-    
+const Card = ({articles,refreshingData}) => {   
 
     const deletePost = (id,e) => {
 
@@ -56,7 +26,8 @@ const Card = ({articles}) => {
 
                 axios.delete(`/api/articles/${id}`)
                 .then((res) => {
-                    router.replace('/admin/articles')
+                    //router.replace('/admin/articles')
+                    refreshingData(true)
                 }).catch(error => console.log(error))
 
                 Swal.fire(
@@ -70,7 +41,10 @@ const Card = ({articles}) => {
 
     return (
         <section className='grid grid-cols-3 gap-4'>
-            {articles.map((post)=>{
+            {articles == ''
+                    ? <p className='font-fgrotesque text-lg tracking-widest p-3 h-20 flex items-center justify-center'>No tienes publicaciones</p>
+                    : 
+                    articles.map((post)=>{
                 return <article className='relative justify-center items-center bg-white w-[300px] p-4 h-[320px] rounded-md flex flex-col transition-shadow duration-700 shadow-lg shadow-black hover:bg-gray-200 hover:opacity-90 mb-5' key={post.id}>
                     <img className="h-40 w-full object-cover object-center transition-all hover:object-bottom duration-1000 rounded-b-md" src={post.image}></img>
                     <Link href={`/admin/posts/${post.id}`}><label className='leading-[1.5] font-bold mb-3 cursor-pointer text-center mt-3'>{post.title}</label></Link>
