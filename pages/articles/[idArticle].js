@@ -77,7 +77,9 @@ export default function Article({article,categories}) {
                                 {
                                     console.log("del output...",article.content)                                    
                                 }
-                            </article>                        
+                            </article> 
+
+                        <p className='text-xs text-pink-500'>Escrito por: {article.author.name} | {new Date(article.date).toLocaleDateString()}</p>
                     </div>
                     {/* <div className='w-full h-[70px] flex gap-4 items-center justify-center font-fgrotesque font-bold'>
                         <button onClick={() => firstPage()} className='py-1 px-2 bg-slate-50 rounded-md font-bold'><span className='text-xl'>&#171;</span> first</button>

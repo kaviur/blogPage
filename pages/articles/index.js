@@ -88,9 +88,9 @@ const RegularPosts = ({ categories, posts, highlights }) => {
     // }
 
     return (
-        <section className='pt-[6rem] h-full min-h-screen flex flex-col items-center'>
-            <div className='flex flex-col md:flex-row w-full h-full my-6 gap-16'>
-                <div className=' h-auto w-full md:h-full md:w-[20%] p-2 bg-slate-100'>
+        <section className='pt-[3rem] h-full min-h-screen flex flex-col items-center bg-slate-600'>
+            <div className='flex flex-wrap md:flex-row w-full lg:w-11/12 h-full my-6 bg-purple-600'>
+                <div className=' h-auto w-full md:h-full md:bg-red-300 md:w-1/4 xl:bg-blue-500 p-2 bg-green-400'>
                     <h1 className='font-faudiowide text-lg py-2 px-2 border-b-2 border-pink-400'>Categorias</h1>
                     <div className='w-full h-auto flex flex-col gap-2 mt-2 box-border'>
                         {
@@ -115,7 +115,7 @@ const RegularPosts = ({ categories, posts, highlights }) => {
                         <FeaturedPosts listOfPosts={highlights} />
                     </div>                
                 </div>    
-                <div className='h-auto min-h-screen flex flex-col gap-5'>
+                <div className='w-full h-auto md:w-3/4 min-h-screen'>
                     {
                         posts
                             ? <PostsList listOfPosts={posts} />

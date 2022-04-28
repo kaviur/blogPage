@@ -12,10 +12,10 @@ const FeaturedPosts = ({listOfPosts}) => {
                 : (
                     listOfPosts.map((post, index) => (
                         <Link key={post.id} href={`/posts/${post.id}`} passHref>
-                            <a>
+                            <a className=' flex justify-center'>
                                 <motion.button
                                     key={post.id}
-                                    className='bg-white p-5 justify-start shadow-md shadow-black transition-shadow duration-700 hover:shadow-lg hover:shadow-black'
+                                    className='bg-white p-5 shadow-md shadow-black transition-shadow duration-700 hover:shadow-lg hover:shadow-black'
                                     initial={{ opacity: 0 }}
                                     animate={{ opacity: [0, 1] }}
                                     transition={{ duration: index / 5 }}

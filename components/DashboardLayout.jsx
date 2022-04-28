@@ -13,9 +13,9 @@ export default function DashboarLayout({children}) {
     //     router.replace("/")
     // }
 
-    if(session === null){
-        router.replace("/")
-    }
+    // if(session === null){
+    //     router.replace("/")
+    // }
     
     // useEffect(()=>{
     //     if(router.route == '/admin') setCurrentPage(0)
@@ -26,7 +26,7 @@ export default function DashboarLayout({children}) {
 
     return (
         <>
-            <div className='h-full min-h-screen flex flex-col items-center bg-gray-50 mt-6 rounded-md'>
+            <div className='h-full min-h-screen flex flex-col items-center mt-6 rounded-md'>
                 <div className='flex flex-col md:flex-row w-full h-full gap-16'>
                     <div className='w-full md:h-full md:w-[20%] p-2 mt-4 ml-5'>
                         <MenuAdmin/>

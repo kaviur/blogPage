@@ -6,6 +6,7 @@ import { FaSearch } from 'react-icons/fa'
 import {IoMdArrowDropdown} from 'react-icons/io'
 import { signOut,signIn } from 'next-auth/react'
 import { setCookies,getCookie } from 'cookies-next'
+import ActiveLink from './ActiveLink'
 
 const NavBar = () => {
 
@@ -23,10 +24,10 @@ const NavBar = () => {
             {session?.user?.role==="admin"
             ?
             <ul className={`${options?"block":"hidden"} absolute right-7 top-10 bg-white p-2`}>
-                <li><Link href="/admin">Dashboard</Link></li>
-                <li><Link href="/admin/articles">Tus publicaciones</Link></li>
-                <li><Link href="/admin/articles/create">Crea un artículo</Link></li>
-                <li><Link href="/admin/categories">Categorias</Link></li>
+                <li><ActiveLink link='/admin/articles' title='Tus publicaciones'/></li>
+                <li><ActiveLink link='/admin/articles/create' title='Crea un artículo'/></li>
+                <li><ActiveLink link='/admin/categories' title='Categorias'/></li>
+                <li><ActiveLink link='/admin' title='Dashboard'/></li>
                 <li className='hover:bg-yellow-100 hover:text-gray-800 p-3 pl-20'>
                     <button className='flex items-center gap-3' onClick={() => signOut()}>Salir</button>
                 </li>
@@ -38,10 +39,10 @@ const NavBar = () => {
                     <button className='flex items-center gap-3' onClick={() => signOut()}>Salir</button>
                 </li> */}
                 {/* TODO:MODIFICAR ESTE MENÚ DEPENDIENDO DEL ROL: lo dejé así para micentroderecursos */}
-                <li><Link href="/admin">Dashboard</Link></li>
-                <li><Link href="/admin/articles">Tus publicaciones</Link></li>
-                <li><Link href="/admin/articles/create">Crea un artículo</Link></li>
-                <li><Link href="/admin/categories">Categorias</Link></li>
+                <li><ActiveLink link='/admin/articles' title='Tus publicaciones'/></li>
+                <li><ActiveLink link='/admin/articles/create' title='Crea un artículo'/></li>
+                <li><ActiveLink link='/admin/categories' title='Categorias'/></li>
+                <li><ActiveLink link='/admin' title='Dashboard'/></li>
                 <li className='hover:bg-yellow-100 hover:text-gray-800 p-3 pl-20'>
                     <button className='flex items-center gap-3' onClick={() => signOut()}>Salir</button>
                 </li>
@@ -57,11 +58,16 @@ const NavBar = () => {
                 
                 <div className=" text-md">
                     <ul className='flex px-7 py-2 gap-5'>
-                        <li><Link href="/articles?filter=new">Juegos</Link></li>
-                        <li><Link href="/articles?filter=highlight">Experimentos</Link></li>
-                        {/* {!session?.user?.email&&<li><Link href="/subscriber/register">Suscribirse</Link></li>} */}
-                        <li className='menuCategories' onMouseOver={()=>{setShowCats(true)}}>Categorias <IoMdArrowDropdown onClick={()=>{setShowCats(!showCats)}} className='w-5 h-5 inline-block'/></li>
-                        <li><Link href='/articles'>Posts</Link></li>
+                        <li><ActiveLink link='/articles?category=juegos' title='Juegos'/></li>
+                        <li onMouseOver={()=>{setShowCats(false)}}><ActiveLink link="/articles?category=experimentos" title='Experimentos'/></li>
+                        {/* {!session?.user?.email&&<li><ActiveLink link="/subscriber/register">Suscribirse/></li>} */}
+                        <li 
+                        className='menuCategories' 
+                        onMouseOver={()=>{setShowCats(true)}}
+                        >
+                            <ActiveLink link={'/'} title={'Categorías'} dropdown={true} fnMenu={setShowCats} isOpen={showCats}/>
+                        </li>
+                        <li onMouseOver={()=>{setShowCats(false)}}><ActiveLink link='/articles' title='Posts'/></li>
                         <li><FaSearch size={20} /></li> 
                         {!session?.user?.email?<li className='ml-auto mr-1 text-gray-500 cursor-pointer' onClick={() => signIn()}>Login</li>
                         :<li className='ml-auto'><span className='mr-1'>{session?.user?.name}</span><button className='p-1 text-slate-400'><FaUser onClick={()=>{setOptions(!options)}} className='w-4 h-4 inline-block'/><IoMdArrowDropdown onClick={()=>{setOptions(!options)}} className='w-5 h-5 inline-block'/></button></li>}                   

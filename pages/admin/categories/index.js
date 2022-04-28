@@ -5,7 +5,7 @@ import axios from 'axios'
 import Loading from '../../../components/Loading'
 import { BsPlusLg } from 'react-icons/bs'
 import { useSession } from 'next-auth/react'
-import CategoriesList from '../../../components/CategoriesList'
+import CategoriesInAdmin from '../../../components/CategoriesInAdmin'
 import CategoryModal from '../../../components/CategoryModal'
 
 export async function getServerSideProps(context) {
@@ -72,7 +72,7 @@ const Categories = ({ categories }) => {
 
     return (
         <DashboardLayout>
-            <section className='w-full h-screen flex flex-col md:flex-row'>
+            <section className='w-full h-auto flex flex-col md:flex-row'>
                 <div className='w-full'>
                     <h1 className='font-faudiowide text-2xl px-8 pt-7'>Categorías</h1>
                     {isError && (<p className='text-red-500 font-fgrotesque font-bold text-lg'>ingrese una categoria</p>)}
@@ -86,7 +86,7 @@ const Categories = ({ categories }) => {
                         {
                             isLoading
                                 ? <Loading />
-                                : <CategoriesList listOfCategories={allCategories} selectCategory={setSelectedCategory} />
+                                : <CategoriesInAdmin listOfCategories={allCategories} selectCategory={setSelectedCategory} />
                         }
                     </div>
                 </div>

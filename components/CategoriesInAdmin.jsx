@@ -1,7 +1,8 @@
 import React from 'react' 
 import { motion } from 'framer-motion'
 
-const CategoriesList = ({ listOfCategories, selectCategory }) => {
+
+const CategoriesInAdmin = ({ listOfCategories, selectCategory }) => {
     return (
         <>
             {
@@ -34,4 +35,4 @@ const CategoriesList = ({ listOfCategories, selectCategory }) => {
     )
 }
 
-export default CategoriesList
+export default CategoriesInAdmin
